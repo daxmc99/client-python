@@ -1,5 +1,4 @@
-# !/usr/bin/env python
-# PYTHON_ARGCOMPLETE_OK
+#!/usr/bin/env python
 
 
 import re
@@ -947,14 +946,14 @@ def _get_timeout(timeout):
 
 def _main():
     import sys
-    client = _cli_client(sys.argv)
-    if not client.valid():
-        _general_args().print_help()
+    print(sys.version_info)
+    if sys.version_info < (3,7):
+        print("Only Python 3.7 and above is supported")
         sys.exit(2)
-
-    args = _full_args(client).parse_args()
-    _run_cli(client, args)
-
+    print("CLI mode is now longer supported.\nPlease use "
+          "the CLI version provided in the UI or install it "
+          "from https://github.com/rancher/cli")
+    sys.exit(2)
 
 if __name__ == '__main__':
     try:
